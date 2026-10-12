@@ -56,8 +56,7 @@
             <!-- Decorative Accent Bar -->
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accentOrange via-amber-500 to-accentCyan"></div>
 
-            <!-- Netlify Form Hidden Attribute Notice & Form Element -->
-            <!-- Note: name="ftc-admission-test" and netlify attribute required for Netlify Forms -->
+            <!-- Netlify Form with AJAX Submission -->
             <form id="admission-form" name="ftc-admission-test" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
                 
                 <!-- Hidden inputs for Netlify -->
@@ -146,9 +145,9 @@
                     <div class="space-y-2 bg-inputBg/50 p-4 rounded-xl border border-gray-800">
                         <label class="block text-sm font-semibold text-white">1. Which mechanical setup provides an increase in speed while decreasing torque?</label>
                         <div class="space-y-2 mt-2">
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="A" required class="mr-2 text-accentOrange"> Driving a larger gear with a smaller gear</label>
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="B" class="mr-2 text-accentOrange"> Driving a smaller gear with a larger gear</label>
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="C" class="mr-2 text-accentOrange"> Using a 1:1 gear ratio</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="Driving a larger gear with a smaller gear" required class="mr-2 text-accentOrange"> Driving a larger gear with a smaller gear</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="Driving a smaller gear with a larger gear" class="mr-2 text-accentOrange"> Driving a smaller gear with a larger gear</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="Using a 1:1 gear ratio" class="mr-2 text-accentOrange"> Using a 1:1 gear ratio</label>
                         </div>
                     </div>
 
@@ -156,9 +155,9 @@
                     <div class="space-y-2 bg-inputBg/50 p-4 rounded-xl border border-gray-800">
                         <label class="block text-sm font-semibold text-white">2. In programming, what is the primary purpose of a sensor feedback loop (like encoders or color sensors)?</label>
                         <div class="space-y-2 mt-2">
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="A" required class="mr-2 text-accentOrange"> To make the robot look more colorful</label>
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="B" class="mr-2 text-accentOrange"> To allow the robot to make autonomous decisions based on its environment</label>
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="C" class="mr-2 text-accentOrange"> To drain the battery faster</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="To make the robot look more colorful" required class="mr-2 text-accentOrange"> To make the robot look more colorful</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="To allow autonomous decisions based on environment" class="mr-2 text-accentOrange"> To allow the robot to make autonomous decisions based on its environment</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="To drain the battery faster" class="mr-2 text-accentOrange"> To drain the battery faster</label>
                         </div>
                     </div>
 
@@ -166,9 +165,9 @@
                     <div class="space-y-2 bg-inputBg/50 p-4 rounded-xl border border-gray-800">
                         <label class="block text-sm font-semibold text-white">3. During an intense FTC match, your alliance partner robot breaks down unexpectedly. What is your best course of action?</label>
                         <div class="space-y-2 mt-2">
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="A" required class="mr-2 text-accentOrange"> Panic and stop playing</label>
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="B" class="mr-2 text-accentOrange"> Quickly adjust your strategy to play defensively or maximize your own scoring safely</label>
-                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="C" class="mr-2 text-accentOrange"> Shout at the referees</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="Panic and stop playing" required class="mr-2 text-accentOrange"> Panic and stop playing</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="Quickly adjust strategy defensively" class="mr-2 text-accentOrange"> Quickly adjust your strategy to play defensively or maximize your own scoring safely</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="Shout at referees" class="mr-2 text-accentOrange"> Shout at the referees</label>
                         </div>
                     </div>
                 </div>
@@ -232,7 +231,7 @@
                         </p>
                     </div>
                     <div class="p-4 bg-inputBg rounded-xl border border-gray-700 text-left max-w-md mx-auto text-xs text-gray-400 space-y-1">
-                        <p><strong>Status:</strong> Ready for Netlify Deployment</p>
+                        <p><strong>Status:</strong> Configured for Netlify AJAX Submission</p>
                         <p><strong>Target Form:</strong> ftc-admission-test</p>
                     </div>
                 </div>
@@ -369,10 +368,46 @@
                 }
             });
 
-            // Form submission handler with Netlify success redirect simulation or standard post
+            // AJAX Netlify Form Submission Handler
             const form = document.getElementById('admission-form');
             form.addEventListener('submit', function(e) {
-                // If using standard netlify form submission, let it post or handle via fetch
+                e.preventDefault();
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Submitting...";
+
+                const formData = new FormData(form);
+                
+                fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    // Show custom success state inside the card without 404
+                    const card = form.closest('.bg-cardBg');
+                    card.innerHTML = `
+                        <div class="text-center py-10 space-y-4">
+                            <div class="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl border border-emerald-500/40 glow-cyan">
+                                ✓
+                            </div>
+                            <h2 class="text-3xl font-extrabold text-white">Application Submitted Successfully!</h2>
+                            <p class="text-gray-300 max-w-md mx-auto text-sm">
+                                Thank you for applying to the FTC Robotics Team under the "STEM en Action" program. Your response has been safely recorded in Netlify Forms. Our coaches will review your answers and contact you soon!
+                            </p>
+                            <div class="pt-4">
+                                <button onclick="window.location.reload()" class="px-6 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold text-sm transition-all-custom">
+                                    Submit Another Response
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                })
+                .catch((error) => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Submit Application 🚀";
+                    alert("Submission failed. Please check your connection and try again.");
+                });
             });
         });
     </script>
