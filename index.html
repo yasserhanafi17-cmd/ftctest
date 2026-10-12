@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTC Team Admission Test | STEM en Action</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#090d16',
+                        cardBg: '#121929',
+                        accentOrange: '#ff6b00',
+                        accentCyan: '#00f2fe',
+                        inputBg: '#1a2338',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glow-orange { box-shadow: 0 0 25px rgba(255, 107, 0, 0.3); }
+        .glow-cyan { box-shadow: 0 0 25px rgba(0, 242, 254, 0.2); }
+        .transition-all-custom { transition: all 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 min-h-screen flex flex-col justify-between selection:bg-accentOrange selection:text-white">
+
+    <header class="border-b border-gray-800 bg-cardBg/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accentOrange to-amber-600 flex items-center justify-center glow-orange font-black text-xl text-white">
+                    FTC
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg tracking-wide text-white">STEM en Action</h1>
+                    <p class="text-xs text-gray-400">Official Team Admission & Skills Assessment</p>
+                </div>
+            </div>
+            <div id="step-indicator-badge" class="px-3 py-1 bg-inputBg border border-gray-700 text-accentCyan text-xs font-semibold rounded-full">
+                Step 1 of 5
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-3xl w-full mx-auto px-4 py-8 flex-grow flex items-center justify-center">
+        <div class="w-full bg-cardBg border border-gray-800 rounded-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden glow-cyan">
+            
+            <!-- Decorative Accent Bar -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accentOrange via-amber-500 to-accentCyan"></div>
+
+            <!-- Netlify Form Hidden Attribute Notice & Form Element -->
+            <!-- Note: name="ftc-admission-test" and netlify attribute required for Netlify Forms -->
+            <form id="admission-form" name="ftc-admission-test" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+                
+                <!-- Hidden inputs for Netlify -->
+                <input type="hidden" name="form-name" value="ftc-admission-test">
+                <p class="hidden">
+                    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+
+                <!-- ================= STEP 1: Personal Info & Role Selection ================= -->
+                <div class="form-step space-y-5" data-step="1">
+                    <div class="border-b border-gray-800 pb-4">
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <span>👤</span> Personal Information & Role Preference
+                        </h2>
+                        <p class="text-sm text-gray-400 mt-1">Tell us who you are and where your passion lies in robotics.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="e.g. Youssef Alami" 
+                                class="w-full bg-inputBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentOrange transition-all-custom">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Grade / Year *</label>
+                            <select id="grade" name="grade" required 
+                                class="w-full bg-inputBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentOrange transition-all-custom">
+                                <option value="" disabled selected>Select your grade</option>
+                                <option value="Tronc Commun">Tronc Commun</option>
+                                <option value="1ère Année Bac">1ère Année Bac</option>
+                                <option value="2ème Année Bac">2ème Année Bac</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="student@example.com" 
+                                class="w-full bg-inputBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentOrange transition-all-custom">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">WhatsApp / Phone *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+212 600 000000" 
+                                class="w-full bg-inputBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentOrange transition-all-custom">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Primary Team Role Preference *</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="role-selection-group">
+                            <label class="flex items-center p-3 bg-inputBg border border-gray-700 rounded-xl cursor-pointer hover:border-accentOrange transition-all-custom">
+                                <input type="radio" name="preferredRole" value="Mechanical Assembly" required class="text-accentOrange focus:ring-accentOrange h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200">⚙️ Mechanical Assembly & Hardware</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-inputBg border border-gray-700 rounded-xl cursor-pointer hover:border-accentOrange transition-all-custom">
+                                <input type="radio" name="preferredRole" value="Programming" class="text-accentOrange focus:ring-accentOrange h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200">💻 Programming & Software</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-inputBg border border-gray-700 rounded-xl cursor-pointer hover:border-accentOrange transition-all-custom">
+                                <input type="radio" name="preferredRole" value="Driver Team" class="text-accentOrange focus:ring-accentOrange h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200">🎮 Driver Team & Field Ops</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-inputBg border border-gray-700 rounded-xl cursor-pointer hover:border-accentOrange transition-all-custom">
+                                <input type="radio" name="preferredRole" value="Strategy & Scouting" class="text-accentOrange focus:ring-accentOrange h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200">📊 Strategy & Game Scouting</span>
+                            </label>
+                            <label class="flex items-center p-3 bg-inputBg border border-gray-700 rounded-xl cursor-pointer hover:border-accentOrange transition-all-custom sm:col-span-2">
+                                <input type="radio" name="preferredRole" value="Portfolio & Documentation" class="text-accentOrange focus:ring-accentOrange h-4 w-4">
+                                <span class="ml-3 text-sm font-medium text-gray-200">📝 Engineering Portfolio & Documentation</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= STEP 2: General FTC & Problem Solving ================= -->
+                <div class="form-step space-y-6 hidden" data-step="2">
+                    <div class="border-b border-gray-800 pb-4">
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <span>🧠</span> General Engineering & Teamwork Aptitude
+                        </h2>
+                        <p class="text-sm text-gray-400 mt-1">Answer these core technical and problem-solving questions.</p>
+                    </div>
+
+                    <!-- Question 1 -->
+                    <div class="space-y-2 bg-inputBg/50 p-4 rounded-xl border border-gray-800">
+                        <label class="block text-sm font-semibold text-white">1. Which mechanical setup provides an increase in speed while decreasing torque?</label>
+                        <div class="space-y-2 mt-2">
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="A" required class="mr-2 text-accentOrange"> Driving a larger gear with a smaller gear</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="B" class="mr-2 text-accentOrange"> Driving a smaller gear with a larger gear</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q1" value="C" class="mr-2 text-accentOrange"> Using a 1:1 gear ratio</label>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="space-y-2 bg-inputBg/50 p-4 rounded-xl border border-gray-800">
+                        <label class="block text-sm font-semibold text-white">2. In programming, what is the primary purpose of a sensor feedback loop (like encoders or color sensors)?</label>
+                        <div class="space-y-2 mt-2">
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="A" required class="mr-2 text-accentOrange"> To make the robot look more colorful</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="B" class="mr-2 text-accentOrange"> To allow the robot to make autonomous decisions based on its environment</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q2" value="C" class="mr-2 text-accentOrange"> To drain the battery faster</label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="space-y-2 bg-inputBg/50 p-4 rounded-xl border border-gray-800">
+                        <label class="block text-sm font-semibold text-white">3. During an intense FTC match, your alliance partner robot breaks down unexpectedly. What is your best course of action?</label>
+                        <div class="space-y-2 mt-2">
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="A" required class="mr-2 text-accentOrange"> Panic and stop playing</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="B" class="mr-2 text-accentOrange"> Quickly adjust your strategy to play defensively or maximize your own scoring safely</label>
+                            <label class="flex items-center text-sm text-gray-300 cursor-pointer"><input type="radio" name="q3" value="C" class="mr-2 text-accentOrange"> Shout at the referees</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= STEP 3: Role-Specific Scenario ================= -->
+                <div class="form-step space-y-5 hidden" data-step="3">
+                    <div class="border-b border-gray-800 pb-4">
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <span>⚡</span> Role-Specific Scenario Challenge
+                        </h2>
+                        <p id="scenario-subtitle" class="text-sm text-gray-400 mt-1">Based on your chosen role, solve the following scenario.</p>
+                    </div>
+
+                    <div id="scenario-container" class="bg-inputBg p-5 rounded-xl border border-gray-700 space-y-3">
+                        <!-- Dynamically populated via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- ================= STEP 4: Motivation & Commitment ================= -->
+                <div class="form-step space-y-5 hidden" data-step="4">
+                    <div class="border-b border-gray-800 pb-4">
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <span>🚀</span> Motivation & Availability
+                        </h2>
+                        <p class="text-sm text-gray-400 mt-1">FTC robotics requires teamwork, dedication, and time commitment.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Why do you want to join our FTC robotics team? *</label>
+                        <textarea id="motivation" name="motivation" rows="4" required placeholder="Share what excites you about STEM, robotics, and teamwork..." 
+                            class="w-full bg-inputBg border border-gray-700 rounded-xl p-4 text-white focus:outline-none focus:border-accentOrange transition-all-custom"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Are you available for weekly club sessions (after school & weekends)? *</label>
+                        <select id="availability" name="availability" required 
+                            class="w-full bg-inputBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentOrange transition-all-custom">
+                            <option value="" disabled selected>Select availability</option>
+                            <option value="Yes, fully available">Yes, fully available</option>
+                            <option value="Mostly available (may have occasional conflicts)">Mostly available (may have occasional conflicts)</option>
+                            <option value="Limited availability">Limited availability</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Previous Experience (Coding, CAD, 3D Printing, Tools, Competitions)?</label>
+                        <input type="text" id="experience" name="experience" placeholder="e.g. Basic Python, Arduino, or none (we teach everything!)" 
+                            class="w-full bg-inputBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentOrange transition-all-custom">
+                    </div>
+                </div>
+
+                <!-- ================= STEP 5: Success / Submission Screen ================= -->
+                <div class="form-step space-y-6 hidden text-center py-6" data-step="5">
+                    <div class="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl border border-emerald-500/40 glow-cyan">
+                        ✓
+                    </div>
+                    <div class="space-y-2">
+                        <h2 class="text-3xl font-extrabold text-white">Application Ready to Submit!</h2>
+                        <p class="text-gray-300 max-w-md mx-auto text-sm">
+                            You have completed all sections of the FTC Team Admission Test. Click submit below to send your responses directly to our team mentors via Netlify Forms.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-inputBg rounded-xl border border-gray-700 text-left max-w-md mx-auto text-xs text-gray-400 space-y-1">
+                        <p><strong>Status:</strong> Ready for Netlify Deployment</p>
+                        <p><strong>Target Form:</strong> ftc-admission-test</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-between pt-6 border-t border-gray-800">
+                    <button type="button" id="prev-btn" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium text-sm transition-all-custom hidden">
+                        ← Back
+                    </button>
+                    <div class="ml-auto flex space-x-3">
+                        <button type="button" id="next-btn" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-accentOrange to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-semibold text-sm shadow-lg glow-orange transition-all-custom">
+                            Next Step →
+                        </button>
+                        <button type="submit" id="submit-btn" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold text-sm shadow-lg hidden">
+                            Submit Application 🚀
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-800 py-6 text-center text-xs text-gray-500">
+        <p>STEM en Action • FIRST Tech Challenge (FTC) • Powered by Netlify Forms</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentStep = 1;
+            const totalSteps = 5;
+            
+            const steps = document.querySelectorAll('.form-step');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const stepIndicatorBadge = document.getElementById('step-indicator-badge');
+
+            // Scenarios based on role
+            const scenarios = {
+                "Mechanical Assembly": {
+                    title: "Mechanical Design Challenge",
+                    desc: "Your robot's arm keeps bending under the heavy weight of game elements. Explain how you would redesign or reinforce the arm joint using basic FTC hardware (channel, extrusion, gussets, or gear reduction)."
+                },
+                "Programming": {
+                    title: "Autonomous Navigation Logic",
+                    desc: "Write a short pseudocode or explanation for how your robot should detect a custom barcode or color marker using a distance/color sensor and drive forward 50 centimeters before stopping."
+                },
+                "Driver Team": {
+                    title: "High-Pressure Field Strategy",
+                    desc: "During the last 30 seconds of an elimination match, your robot is tipped over in the scoring zone. As the driver, what precise instructions do you give your alliance partners and human player?"
+                },
+                "Strategy & Scouting": {
+                    title: "Match Data & Alliance Selection",
+                    desc: "When scouting opposing teams for alliance selection during eliminations, what 3 key performance metrics would you prioritize and why?"
+                },
+                "Portfolio & Documentation": {
+                    title: "Engineering Journal Layout",
+                    desc: "Explain how you would document a failed design iteration (e.g., a gripper that dropped cones) in the Engineering Portfolio to impress the judges."
+                }
+            };
+
+            function updateStepDisplay() {
+                steps.forEach((step, index) => {
+                    if (index + 1 === currentStep) {
+                        step.classList.remove('hidden');
+                    } else {
+                        step.classList.add('hidden');
+                    }
+                });
+
+                stepIndicatorBadge.textContent = `Step ${currentStep} of ${totalSteps}`;
+
+                // Toggle button visibility
+                if (currentStep === 1) {
+                    prevBtn.classList.add('hidden');
+                } else {
+                    prevBtn.classList.remove('hidden');
+                }
+
+                if (currentStep === totalSteps) {
+                    nextBtn.classList.add('hidden');
+                    submitBtn.classList.remove('hidden');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                    submitBtn.classList.add('hidden');
+                }
+
+                // Populate scenario if entering step 3
+                if (currentStep === 3) {
+                    const selectedRoleInput = document.querySelector('input[name="preferredRole"]:checked');
+                    const role = selectedRoleInput ? selectedRoleInput.value : "Mechanical Assembly";
+                    const data = scenarios[role] || scenarios["Mechanical Assembly"];
+                    
+                    document.getElementById('scenario-subtitle').textContent = `Role: ${role}`;
+                    document.getElementById('scenario-container').innerHTML = `
+                        <h3 class="font-bold text-white text-base">${data.title}</h3>
+                        <p class="text-sm text-gray-300">${data.desc}</p>
+                        <textarea name="scenarioAnswer" rows="4" required placeholder="Type your detailed response here..." 
+                            class="w-full bg-darkBg border border-gray-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-accentOrange mt-2"></textarea>
+                    `;
+                }
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Validate current step inputs before moving forward
+            function validateCurrentStep() {
+                const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+                const inputs = currentStepElement.querySelectorAll('input, select, textarea');
+                
+                for (let input of inputs) {
+                    if (!input.checkValidity()) {
+                        input.reportValidity();
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            nextBtn.addEventListener('click', function () {
+                if (validateCurrentStep()) {
+                    if (currentStep < totalSteps) {
+                        currentStep++;
+                        updateStepDisplay();
+                    }
+                }
+            });
+
+            prevBtn.addEventListener('click', function () {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateStepDisplay();
+                }
+            });
+
+            // Form submission handler with Netlify success redirect simulation or standard post
+            const form = document.getElementById('admission-form');
+            form.addEventListener('submit', function(e) {
+                // If using standard netlify form submission, let it post or handle via fetch
+            });
+        });
+    </script>
+</body>
+</html>
